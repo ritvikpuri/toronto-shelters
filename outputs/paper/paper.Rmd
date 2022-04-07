@@ -1,12 +1,11 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Toronto Shelters"
+subtitle: "Analyzing the State of Homeless Shelters in Toronto"
 author: 
-  - First author
-  - Another author
+  - Ritvik Puri
 thanks: "Code and data are available at: LINK."
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "This paper presents a report on the conditions of various homeless shelters across the city of Toronto. Various factors such as location, occupancy, program type are taken into account. The aim is to find areas where these shelters are lacking and further imporvement cant be made."
 output:
   bookdown::pdf_document2
 toc: FALSE
@@ -17,60 +16,44 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
-library(palmerpenguins)
+library(opendatatoronto)
+library(dplyr)
+```
+
+```{r, include=FALSE}
+
+# get package
+package <- show_package("21c83b32-d5a8-4106-a54f-010dbe49f6f2")
+package
+
+# get all resources for this package
+resources <- list_package_resources("21c83b32-d5a8-4106-a54f-010dbe49f6f2")
+
+# identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
+datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
+
+# load the first datastore resource as a sample
+data <- filter(datastore_resources, row_number()==1) %>% get_resource()
+view(data)
+```
+
+```{r, include = FALSE}
+data %>%
+  ggplot(aes(x = OCCUPIED_ROOMS, y = UNOCCUPIED_ROOMS)) +
+  geom_point()
+
+length(unique(data$SHELTER_ID))
 ```
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. For instance, Section \@ref(data). R Markdown automatically makes the sections lower case and adds a dash to spaces to generate labels, for instance, Section \@ref(first-discussion-point). 
+Homelessness is a big problem in almost every country around the world. Despite being one of the most deveoped countries in the world, Canada has around quarter of a million people living wihtout a roof on their head. As you may expect, these rates are even higher for a busy metropolitan city such as Toronto. For every 10,000 people, 30 are homeless. While this may not sound like a lot at first glance, there are over 2 million people living in the city. This brings up mulitple questions. Who are these people? How do they live? And perhaps most importantly, what is the government doing for them?
 
+The government of Canada has a lot of shelters for helping such people. The city of Toronto has 65 such shelters, each of various services and programs to help the people that they take in. This paper aims to analyze and report the conditions of these shelters, such as how much are they being used? Is a specific area in the city a hot spot for homeless people? Do certain programs get less people than others?
 
+\newpage
 
 # Data
-
-Our data is of penguins (Figure \@ref(fig:bills)).
-
-```{r bills, fig.cap="Bills of penguins", echo = FALSE}
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = FALSE) +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk more about it.
-
-Also bills and their average (Figure \@ref(fig:billssssss)). (Notice how you can change the height and width so they don't take the whole page?)
-
-```{r billssssss, fig.cap="More bills of penguins", echo = FALSE, fig.width=8, fig.height=4}
-
-# This needs to be about the random data tha tI sasmpled?
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = FALSE) +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk way more about it. 
-
-
-
-# Model
-
-\begin{equation}
-Pr(\theta | y) = \frac{Pr(y | \theta) Pr(\theta)}{Pr(y)}  (\#eq:bayes)
-\end{equation}
-
-Equation \@ref(eq:bayes) seems useful, eh?
-
-Here's a dumb example of how to use some references: In paper we run our analysis in `R` [@citeR]. We also use the `tidyverse` which was written by @thereferencecanbewhatever If we were interested in baseball data then @citeLahman could be useful. 
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
 
 
 # Results
@@ -79,15 +62,11 @@ We can use maths by including latex between dollar signs, for instance $\theta$.
 
 ## First discussion point
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
-
 ## Second discussion point
 
 ## Third discussion point
 
 ## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
 
 \newpage
 
