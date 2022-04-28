@@ -203,7 +203,7 @@ p4 <- data %>%
 
 Over the last few years, various sources have reported that the Toronto Shelters are overcrowded and overflowing with more people that they can safely accommodate. According to the United Nations Emergency Handbook camp site planning guidelines, there should be around 5 sqm available per person for appropriate living and the minimum per person is 3.5 spm.(@UNHCR) Our data suggests that since these shelters are running at near maximum capacity, these universal guidelines might not be met for the people living at these places. Press Progress conducted an investigation in 2019 and found out that four people were living in the area that should only be given to one person.(@Pressprogress_2019)
 
-Figure below plots the Capacity of Actual Beds Available with the Occupied Beds, Figure below plots Capacity of Actual Rooms Available with the Occupied Rooms. While most of the programs have less than 100 rooms and beds available, it should be noted that they are very close to being completely filled and in some cases even being overcrowded and have more people living in them that they can properly support.
+Figure 6 plots the Capacity of Actual Beds Available with the Occupied Beds and plots Capacity of Actual Rooms Available with the Occupied Rooms. While most of the programs have less than 100 rooms and beds available, it should be noted that they are very close to being completely filled and in some cases even being overcrowded and have more people living in them that they can properly support.
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.cap="Histogram showing the current amount of Beds and Rooms Occcuiped and Available"}
 
@@ -227,7 +227,7 @@ p5 / p6
 
 # Discussion
 
-As we see how shelters of various Sectors are overflowing, one of these sectors is more important in my opinion. This would be the homeless families that need housing throughout the city of Toronto. When compared to other sectors, such as Men, as we can see in Figures below, the number of shelters with beds for families is extremely limited. This may pose a problem for the city as it would be easier to live in a shelter as a single adult man or woman. Shelters have upto a max of 3 beds that can sustain a family, and all such shelters are running at maximum capacity. The shelters which have only 1 bed reserved for families are in fact housing much more families that they can safely keep.
+As we see how shelters of various Sectors are overflowing, one of these sectors is more important in my opinion. This would be the homeless families that need housing throughout the city of Toronto. When compared to other sectors, such as Men, as we can see in Figure 6, the number of shelters with beds for families is extremely limited. This may pose a problem for the city as it would be easier to live in a shelter as a single adult man or woman. Shelters have upto a max of 3 beds that can sustain a family, and all such shelters are running at maximum capacity. The shelters which have only 1 bed reserved for families are in fact housing much more families that they can safely keep.
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.cap="Histograms showing the difference between the Men Sector and Family Sector"}
 
@@ -246,10 +246,9 @@ p8 <- data %>%
       geom_histogram(position = "dodge")
 
 p7 / p8
-
 ```
 
-Such shelter programs are often categorized if they have been specially set up for specific issue at hand. While most of the shelters programs in the City of Toronto are Basic Shelter and Overnight ones, over the last few years a lot of COVID-19 response have been set up. This is still an adapting program, and aims to deliver support the people affected by unprecedented situations that may have risen due to the global pandemic.(@toronto) These shelters are currently open for Families, Men and Mixed Adults and from the Figure below we can see the spikes due to people having to take shelter as a result of rapidly changing situations. These shelters have been extended to be kept running until April 2023 as of the most recent announcement by the Shelter, Support and Housing Administration (SSHA). There are also a lot of Winter Programs that are only set up during the winter months to provide an alternative to people sleeping on the cold streets of Toronto. 
+Such shelter programs are often categorized if they have been specially set up for specific issue at hand. While most of the shelters programs in the City of Toronto are Basic Shelter and Overnight ones, over the last few years a lot of COVID-19 response have been set up. This is still an adapting program, and aims to deliver support the people affected by unprecedented situations that may have risen due to the global pandemic.(@toronto) These shelters are currently open for Families, Men and Mixed Adults and from the Figure 7 we can see the spikes due to people having to take shelter as a result of rapidly changing situations. These shelters have been extended to be kept running until April 2023 as of the most recent announcement by the Shelter, Support and Housing Administration (SSHA). There are also a lot of Winter Programs that are only set up during the winter months to provide an alternative to people sleeping on the cold streets of Toronto. 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Occupied Beds depicted in a Density chart grouped by their Program Area"}
 
